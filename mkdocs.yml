@@ -1,7 +1,7 @@
 site_name: OSCO - Open Security Capability Ontology
 site_description: A comprehensive ontology for security capabilities, discoveries, and detections
-repo_url: https://github.com/sublime-security/osco
-repo_name: sublime-security/osco
+repo_url: https://github.com/IterativeSecurity/OSCO
+repo_name: IterativeSecurity/OSCO
 edit_uri: edit/main/docs/
 
 theme:
