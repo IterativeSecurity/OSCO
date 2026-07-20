@@ -1,0 +1,60 @@
+name: Generate Docs CI
+
+on:
+  pull_request:
+    paths:
+      - "capability/catalog.json"
+      - "capability/catalog.extended.json"
+      - "discovery/discoveries.json"
+      - "detection/detections.json"
+      - "osco/generators/**"
+      - "scripts/generate_*.py"
+      - ".github/workflows/generate-docs.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "capability/catalog.json"
+      - "capability/catalog.extended.json"
+      - "discovery/discoveries.json"
+      - "detection/detections.json"
+      - "osco/generators/**"
+      - "scripts/generate_*.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python with uv
+        uses: ./.github/actions/setup-python-uv
+        with:
+          python-version: "3.13"
+
+      - name: Generate all catalogs
+        run: make generate
+
+      - name: Upload generated artifacts
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: generated-catalogs
+          path: |
+            capability/catalog.md
+            capability/catalog.extended.md
+            discovery/catalog.md
+            detection/catalog.md
+
+      - name: Check generated files are committed (PR)
+        if: github.event_name == 'pull_request'
+        run: |
+          git diff -- capability/catalog.md discovery/catalog.md detection/catalog.md
+          git diff --exit-code -- capability/catalog.md discovery/catalog.md detection/catalog.md

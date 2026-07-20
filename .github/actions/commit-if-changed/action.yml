@@ -1,0 +1,27 @@
+name: Commit If Changed
+
+description: Commit and push selected files when they are modified.
+
+inputs:
+  files:
+    description: Space-separated file paths to include in status and add operations.
+    required: true
+  commit-message:
+    description: Commit message to use when changes are detected.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Commit and push when files changed
+      shell: bash
+      run: |
+        if [[ -n "$(git status --porcelain ${{ inputs.files }})" ]]; then
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ${{ inputs.files }}
+          git commit -m "${{ inputs.commit-message }}"
+          git push
+        else
+          echo "No changes to commit"
+        fi

@@ -1,0 +1,105 @@
+name: All Validators
+
+on:
+  pull_request:
+    paths:
+      - "mappings/frameworks.yaml"
+      - "ontology/domains.yaml"
+      - "provider/providers.json"
+      - "capability/**"
+      - "detection/detections.json"
+      - "validation/validations.json"
+      - "osco/models/core.py"
+      - "osco/generators/**"
+      - "scripts/validate_*.py"
+      - "scripts/check_*.py"
+      - ".github/workflows/validators.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "mappings/frameworks.yaml"
+      - "ontology/domains.yaml"
+      - "provider/providers.json"
+      - "capability/**"
+      - "detection/detections.json"
+      - "validation/validations.json"
+      - "osco/models/core.py"
+      - "osco/generators/**"
+      - "scripts/validate_*.py"
+      - "scripts/check_*.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: ./.github/actions/setup-python-uv
+        with:
+          python-version: "3.13"
+
+  mapping-frameworks:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: ./.github/actions/setup-python-uv
+        with:
+          python-version: "3.13"
+      - name: Validate mapping frameworks
+        run: uv run scripts/validate_mapping_frameworks.py
+
+  ontology-taxonomy:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: ./.github/actions/setup-python-uv
+        with:
+          python-version: "3.13"
+      - name: Sync ontology domains (check)
+        run: uv run scripts/sync_ontology_domains.py --check
+      - name: Validate ontology taxonomy
+        run: uv run scripts/validate_ontology_taxonomy.py
+
+  provider-registry:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: ./.github/actions/setup-python-uv
+        with:
+          python-version: "3.13"
+      - name: Validate provider registry
+        run: uv run scripts/validate_provider_registry.py
+
+  markdown-links:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: ./.github/actions/setup-python-uv
+        with:
+          python-version: "3.13"
+      - name: Check markdown links
+        run: uv run scripts/check_markdown_links.py
+
+  all-passed:
+    name: All validators passed
+    if: always()
+    needs: [mapping-frameworks, ontology-taxonomy, provider-registry, markdown-links]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide result
+        run: |
+          if [[ "${{ needs.mapping-frameworks.result }}" == "failure" || \
+                "${{ needs.ontology-taxonomy.result }}" == "failure" || \
+                "${{ needs.provider-registry.result }}" == "failure" || \
+                "${{ needs.markdown-links.result }}" == "failure" ]]; then
+            echo "One or more validators failed"
+            exit 1
+          fi

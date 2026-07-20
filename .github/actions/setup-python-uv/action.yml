@@ -1,0 +1,28 @@
+name: Setup Python with uv
+description: "Set up Python and install uv with dependencies"
+
+inputs:
+  python-version:
+    description: "Python version to use"
+    required: false
+    default: "3.13"
+  uv-version:
+    description: "uv version to install"
+    required: false
+    default: "0.4.9"
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Install uv
+      shell: bash
+      run: pip install uv==${{ inputs.uv-version }}
+
+    - name: Install dependencies
+      shell: bash
+      run: uv sync
