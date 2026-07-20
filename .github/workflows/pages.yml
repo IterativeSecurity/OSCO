@@ -48,7 +48,7 @@ jobs:
 
       - name: Install mkdocs dependencies
         run: |
-          uv pip install mkdocs mkdocs-material pymdown-extensions mkdocs-macros-plugin mkdocs-exclude
+          uv pip install mkdocs mkdocs-material pymdown-extensions mkdocs-macros-plugin mkdocs-redirects
       - name: Prepare docs directory
         run: |
           # Copy repo-root files referenced in nav into docs/

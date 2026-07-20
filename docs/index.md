@@ -12,8 +12,8 @@ OSCO provides a standardized framework for describing:
 
 ## Quick Links
 
-- [Vision & Goals](docs/vision.md) - Understand the project mission
-- [Architecture](docs/architecture.md) - Learn the system design
+- [Vision & Goals](vision.md) - Understand the project mission
+- [Architecture](architecture.md) - Learn the system design
 - [Capability Catalog](capability/catalog.md) - Browse all capabilities
 - [Discovery Methods](discovery/catalog.md) - See available discovery queries
 - [Detection Scenarios](detection/catalog.md) - Review threat detections
@@ -41,8 +41,8 @@ OSCO provides a standardized framework for describing:
 ### For Contributors
 
 1. Read the [Contribution Guide](CONTRIBUTING.md)
-2. Check the [Capability Authoring Guide](docs/capability-authoring-guide.md)
-3. Follow the [Best Practices](docs/best-practices.md)
+2. Check the [Capability Authoring Guide](capability-authoring-guide.md)
+3. Follow the [Best Practices](best-practices.md)
 4. Submit pull requests with conventional commits
 
 ## Data Organization

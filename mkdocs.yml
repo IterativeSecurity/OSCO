@@ -32,6 +32,21 @@ theme:
 plugins:
   - search
   - macros
+  - redirects:
+      redirect_maps:
+        docs/vision.md: vision.md
+        docs/architecture.md: architecture.md
+        docs/examples.md: examples.md
+        docs/object-definitions.md: object-definitions.md
+        docs/field-reference.md: field-reference.md
+        docs/relation-types.md: relation-types.md
+        docs/capability-authoring-guide.md: capability-authoring-guide.md
+        docs/discovery-guide.md: discovery-guide.md
+        docs/verification-guide.md: verification-guide.md
+        docs/provider-authoring-guide.md: provider-authoring-guide.md
+        docs/mapping-guide.md: mapping-guide.md
+        docs/governance.md: governance.md
+        docs/best-practices.md: best-practices.md
 
 markdown_extensions:
   - admonition
