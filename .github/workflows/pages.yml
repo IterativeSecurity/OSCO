@@ -54,7 +54,7 @@ jobs:
         run: mkdocs build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@1eb3cb007d329ee3a2fb1a290c0ff1da3600e267 # v3
+        uses: actions/upload-pages-artifact@6870a1d29e80fa487050811e4b39ce555d3eae5d # v3
         with:
           path: 'site'
 
