@@ -9,3 +9,4 @@ examples/osco_graph.json
 *.egg-info
 .eggs/
 .Python
+site/
