@@ -5,5 +5,7 @@ __pycache__/
 .venv/
 *.pyc
 examples/osco_graph.json
-
-*.egg_info/
+*.egg-info/
+*.egg-info
+.eggs/
+.Python
