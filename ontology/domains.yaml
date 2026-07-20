@@ -1,0 +1,1298 @@
+version: 0.1.0
+domains:
+  ai:
+    assistant:
+    - classify
+    - explain
+    - reason
+    - suggest
+    - summarize
+    classification:
+    - classify
+    - explain
+    - reason
+    - suggest
+    - summarize
+    reasoning:
+    - classify
+    - explain
+    - reason
+    - suggest
+    - summarize
+    recommendation:
+    - classify
+    - explain
+    - reason
+    - suggest
+    - summarize
+  api:
+    endpoint:
+    - create
+    - delete
+    - read
+    - rotate
+    - update
+    quota:
+    - create
+    - delete
+    - read
+    - rotate
+    - update
+    scope:
+    - create
+    - delete
+    - read
+    - rotate
+    - update
+    token:
+    - create
+    - delete
+    - read
+    - rotate
+    - update
+  audit:
+    event:
+    - disable
+    - enable
+    - export
+    - query
+    - verify
+    policy:
+    - disable
+    - enable
+    - export
+    - query
+    - verify
+    retention:
+    - disable
+    - enable
+    - export
+    - query
+    - verify
+    trail:
+    - disable
+    - enable
+    - export
+    - query
+    - verify
+  authentication:
+    challenge:
+    - enforce
+    - refresh
+    - request
+    - revoke
+    - validate
+    factor:
+    - enforce
+    - refresh
+    - request
+    - revoke
+    - validate
+    session:
+    - enforce
+    - refresh
+    - request
+    - revoke
+    - validate
+    token:
+    - enforce
+    - refresh
+    - request
+    - revoke
+    - validate
+  authorization:
+    binding:
+    - attach
+    - detach
+    - evaluate
+    - grant
+    - revoke
+    permission:
+    - attach
+    - detach
+    - evaluate
+    - grant
+    - revoke
+    policy:
+    - attach
+    - detach
+    - evaluate
+    - grant
+    - revoke
+    role:
+    - attach
+    - detach
+    - evaluate
+    - grant
+    - revoke
+  automation:
+    orchestration:
+    - monitor
+    - orchestrate
+    - rollback
+    - schedule
+    - trigger
+    playbook:
+    - monitor
+    - orchestrate
+    - rollback
+    - schedule
+    - trigger
+    task:
+    - monitor
+    - orchestrate
+    - rollback
+    - schedule
+    - trigger
+    workflow:
+    - monitor
+    - orchestrate
+    - rollback
+    - schedule
+    - trigger
+  browser:
+    cookie:
+    - delete
+    - export
+    - import
+    - read
+    - write
+    extension:
+    - delete
+    - export
+    - import
+    - read
+    - write
+    history:
+    - delete
+    - export
+    - import
+    - read
+    - write
+    session:
+    - delete
+    - export
+    - import
+    - read
+    - write
+    storage:
+    - delete
+    - export
+    - import
+    - read
+    - write
+  certificate:
+    certificate:
+    - create
+    - delete
+    - import
+    - read
+    - revoke
+    private_key:
+    - create
+    - delete
+    - import
+    - read
+    - revoke
+    store:
+    - create
+    - delete
+    - import
+    - read
+    - revoke
+    trust_anchor:
+    - create
+    - delete
+    - import
+    - read
+    - revoke
+  cloud:
+    bucket:
+    - create
+    - delete
+    - read
+    - tag
+    - update
+    iam:
+      role:
+      - create
+      _actions:
+      - enumerate
+    instance:
+    - create
+    - delete
+    - read
+    - tag
+    - update
+    policy:
+    - create
+    - delete
+    - read
+    - tag
+    - update
+    resource:
+    - create
+    - delete
+    - read
+    - tag
+    - update
+  collaboration:
+    channel:
+    - audit
+    - create
+    - delete
+    - read
+    - update
+    membership:
+    - audit
+    - create
+    - delete
+    - read
+    - update
+    sharing:
+    - audit
+    - create
+    - delete
+    - read
+    - update
+    workspace:
+    - audit
+    - create
+    - delete
+    - read
+    - update
+  collection:
+    artifact:
+    - collect
+    - enrich
+    - export
+    - normalize
+    - store
+    evidence:
+    - collect
+    - enrich
+    - export
+    - normalize
+    - store
+    persistence:
+      evidence:
+      - collect
+    snapshot:
+    - collect
+    - enrich
+    - export
+    - normalize
+    - store
+    timeline:
+    - collect
+    - enrich
+    - export
+    - normalize
+    - store
+  com:
+    activation:
+    - activate
+    - modify
+    - query
+    - register
+    - remove
+    class:
+    - activate
+    - modify
+    - query
+    - register
+    - remove
+    object:
+    - activate
+    - modify
+    - query
+    - register
+    - remove
+    registration:
+    - activate
+    - modify
+    - query
+    - register
+    - remove
+  container:
+    container:
+    - build
+    - delete
+    - inspect
+    - run
+    - stop
+    image:
+    - build
+    - delete
+    - inspect
+    - run
+    - stop
+    runtime:
+    - build
+    - delete
+    - inspect
+    - run
+    - stop
+    volume:
+    - build
+    - delete
+    - inspect
+    - run
+    - stop
+  credential:
+    credential:
+    - access
+    - delete
+    - dump
+    - rotate
+    - store
+    hash:
+    - access
+    - delete
+    - dump
+    - rotate
+    - store
+    token:
+    - access
+    - delete
+    - dump
+    - rotate
+    - store
+    vault:
+    - access
+    - delete
+    - dump
+    - rotate
+    - store
+  database:
+    audit:
+    - create
+    - delete
+    - grant
+    - read
+    - revoke
+    - update
+    query:
+    - create
+    - delete
+    - grant
+    - read
+    - revoke
+    - update
+    role:
+    - create
+    - delete
+    - grant
+    - read
+    - revoke
+    - update
+    table:
+    - create
+    - delete
+    - grant
+    - read
+    - revoke
+    - update
+    user:
+    - create
+    - delete
+    - grant
+    - read
+    - revoke
+    - update
+  detection:
+    analytic:
+    - create
+    - deploy
+    - retire
+    - test
+    - tune
+    baseline:
+    - create
+    - deploy
+    - retire
+    - test
+    - tune
+    query:
+    - create
+    - deploy
+    - retire
+    - test
+    - tune
+    registry:
+      persistence:
+      - detect
+    rule:
+    - create
+    - deploy
+    - retire
+    - test
+    - tune
+  dns:
+    query:
+    - create
+    - delete
+    - monitor
+    - query
+    - update
+    record:
+    - create
+    - delete
+    - monitor
+    - query
+    - update
+    resolver:
+    - create
+    - delete
+    - monitor
+    - query
+    - update
+    zone:
+    - create
+    - delete
+    - monitor
+    - query
+    - update
+  driver:
+    driver:
+    - install
+    - load
+    - query
+    - unload
+    - verify
+    driver_service:
+    - install
+    - load
+    - query
+    - unload
+    - verify
+    driver_signature:
+    - install
+    - load
+    - query
+    - unload
+    - verify
+  email:
+    forwarding:
+    - audit
+    - create
+    - delete
+    - read
+    - update
+    mailbox:
+    - audit
+    - create
+    - delete
+    - read
+    - update
+    rule:
+    - audit
+    - create
+    - delete
+    - read
+    - update
+    transport:
+    - audit
+    - create
+    - delete
+    - read
+    - update
+  enrichment:
+    context:
+    - annotate
+    - correlate
+    - lookup
+    - publish
+    - score
+    entity:
+    - annotate
+    - correlate
+    - lookup
+    - publish
+    - score
+    indicator:
+    - annotate
+    - correlate
+    - lookup
+    - publish
+    - score
+    risk:
+    - annotate
+    - correlate
+    - lookup
+    - publish
+    - score
+  etw:
+    consumer:
+    - emit
+    - parse
+    - start
+    - stop
+    - subscribe
+    provider:
+    - emit
+    - parse
+    - start
+    - stop
+    - subscribe
+    session:
+    - emit
+    - parse
+    - start
+    - stop
+    - subscribe
+    trace:
+    - emit
+    - parse
+    - start
+    - stop
+    - subscribe
+  eventlog:
+    channel:
+    - clear
+    - configure
+    - export
+    - read
+    - write
+    event:
+    - clear
+    - configure
+    - export
+    - read
+    - write
+    retention:
+    - clear
+    - configure
+    - export
+    - read
+    - write
+    subscription:
+    - clear
+    - configure
+    - export
+    - read
+    - write
+  filesystem:
+    directory:
+    - create
+    - delete
+    - hash
+    - list
+    - modify
+    - read
+    file:
+    - create
+    - delete
+    - hash
+    - list
+    - modify
+    - read
+    link:
+    - create
+    - delete
+    - hash
+    - list
+    - modify
+    - read
+    metadata:
+    - create
+    - delete
+    - hash
+    - list
+    - modify
+    - read
+    permission:
+    - create
+    - delete
+    - hash
+    - list
+    - modify
+    - read
+  firewall:
+    exception:
+    - audit
+    - create
+    - delete
+    - disable
+    - enable
+    policy:
+    - audit
+    - create
+    - delete
+    - disable
+    - enable
+    profile:
+    - audit
+    - create
+    - delete
+    - disable
+    - enable
+    rule:
+    - audit
+    - create
+    - delete
+    - disable
+    - enable
+  identity:
+    federation:
+    - create
+    - delete
+    - enumerate
+    - read
+    - update
+    group:
+    - create
+    - delete
+    - enumerate
+    - read
+    - update
+    service_principal:
+    - create
+    - delete
+    - enumerate
+    - read
+    - update
+    user:
+    - create
+    - delete
+    - enumerate
+    - read
+    - update
+  kerberos:
+    delegation:
+    - delegate
+    - purge
+    - renew
+    - request
+    - validate
+    service_ticket:
+    - delegate
+    - purge
+    - renew
+    - request
+    - validate
+    tgt:
+    - delegate
+    - purge
+    - renew
+    - request
+    - validate
+    ticket:
+    - delegate
+    - purge
+    - renew
+    - request
+    - validate
+  kernel:
+    extension:
+    - inspect
+    - load
+    - modify
+    - register
+    - remove
+    hook:
+    - inspect
+    - load
+    - modify
+    - register
+    - remove
+    module:
+    - inspect
+    - load
+    - modify
+    - register
+    - remove
+    syscall:
+    - inspect
+    - load
+    - modify
+    - register
+    - remove
+  kubernetes:
+    configmap:
+    - create
+    - delete
+    - exec
+    - read
+    - update
+    pod:
+    - create
+    - delete
+    - exec
+    - read
+    - update
+    role:
+    - create
+    - delete
+    - exec
+    - read
+    - update
+    secret:
+    - create
+    - delete
+    - exec
+    - read
+    - update
+    service_account:
+    - create
+    - delete
+    - exec
+    - read
+    - update
+  logging:
+    collector:
+    - configure
+    - route
+    - start
+    - stop
+    - validate
+    parser:
+    - configure
+    - route
+    - start
+    - stop
+    - validate
+    pipeline:
+    - configure
+    - route
+    - start
+    - stop
+    - validate
+    sink:
+    - configure
+    - route
+    - start
+    - stop
+    - validate
+  mail:
+    forwarding:
+    - create
+  memory:
+    dump:
+    - allocate
+    - dump
+    - protect
+    - read
+    - write
+    page:
+    - allocate
+    - dump
+    - protect
+    - read
+    - write
+    process_memory:
+    - allocate
+    - dump
+    - protect
+    - read
+    - write
+    region:
+    - allocate
+    - dump
+    - protect
+    - read
+    - write
+  named_pipe:
+    client:
+    - close
+    - connect
+    - create
+    - read
+    - write
+    message:
+    - close
+    - connect
+    - create
+    - read
+    - write
+    pipe:
+    - close
+    - connect
+    - create
+    - read
+    - write
+    server:
+    - close
+    - connect
+    - create
+    - read
+    - write
+  network:
+    connection:
+    - close
+    - inspect
+    - modify
+    - monitor
+    - open
+    dns:
+    - query
+    interface:
+    - close
+    - inspect
+    - modify
+    - monitor
+    - open
+    proxy:
+    - tunnel
+    route:
+    - close
+    - inspect
+    - modify
+    - monitor
+    - open
+    socket:
+    - close
+    - inspect
+    - modify
+    - monitor
+    - open
+  office:
+    addin:
+    - create
+    - delete
+    - disable
+    - execute
+    - inspect
+    document:
+    - create
+    - delete
+    - disable
+    - execute
+    - inspect
+    macro:
+    - create
+    - delete
+    - disable
+    - execute
+    - inspect
+    template:
+    - create
+    - delete
+    - disable
+    - execute
+    - inspect
+  powershell:
+    command:
+    - constrain
+    - execute
+    - import
+    - inspect
+    - log
+    module:
+    - constrain
+    - execute
+    - import
+    - inspect
+    - log
+    runspace:
+    - constrain
+    - execute
+    - import
+    - inspect
+    - log
+    script:
+    - constrain
+    - execute
+    - import
+    - inspect
+    - log
+  privilege:
+    context:
+    - delegate
+    - drop
+    - escalate
+    - inspect
+    - restrict
+    permission_set:
+    - delegate
+    - drop
+    - escalate
+    - inspect
+    - restrict
+    role:
+    - delegate
+    - drop
+    - escalate
+    - inspect
+    - restrict
+    token:
+    - delegate
+    - drop
+    - escalate
+    - inspect
+    - restrict
+  process:
+    argument:
+    - create
+    - enumerate
+    - inject
+    - modify
+    - read
+    - terminate
+    environment:
+    - create
+    - enumerate
+    - inject
+    - modify
+    - read
+    - terminate
+    injection:
+    - dll
+    - hollow
+    lsass:
+    - access
+    process:
+    - create
+    - enumerate
+    - inject
+    - modify
+    - read
+    - terminate
+    token:
+    - create
+    - enumerate
+    - inject
+    - modify
+    - read
+    - terminate
+  proxy:
+    configuration:
+    - bypass
+    - delete
+    - enforce
+    - read
+    - set
+    credential:
+    - bypass
+    - delete
+    - enforce
+    - read
+    - set
+    route:
+    - bypass
+    - delete
+    - enforce
+    - read
+    - set
+    rule:
+    - bypass
+    - delete
+    - enforce
+    - read
+    - set
+  registry:
+    hive:
+    - backup
+    - delete
+    - enumerate
+    - read
+    - set
+    key:
+    - backup
+    - delete
+    - enumerate
+    - read
+    - set
+    permission:
+    - backup
+    - delete
+    - enumerate
+    - read
+    - set
+    run:
+    - persist
+    value:
+    - backup
+    - delete
+    - enumerate
+    - read
+    - set
+  response:
+    containment:
+    - document
+    - execute
+    - plan
+    - rollback
+    - verify
+    isolation:
+    - document
+    - execute
+    - plan
+    - rollback
+    - verify
+    remediation:
+    - document
+    - execute
+    - plan
+    - rollback
+    - verify
+    rollback:
+    - document
+    - execute
+    - plan
+    - rollback
+    - verify
+  rpc:
+    binding:
+    - discover
+    - inspect
+    - invoke
+    - register
+    - restrict
+    endpoint:
+    - discover
+    - inspect
+    - invoke
+    - register
+    - restrict
+    method:
+    - discover
+    - inspect
+    - invoke
+    - register
+    - restrict
+    service:
+    - discover
+    - inspect
+    - invoke
+    - register
+    - restrict
+  scheduled_task:
+    action:
+    - create
+    - delete
+    - modify
+    - query
+    - run
+    principal:
+    - create
+    - delete
+    - modify
+    - query
+    - run
+    task:
+    - create
+    - delete
+    - modify
+    - query
+    - run
+    trigger:
+    - create
+    - delete
+    - modify
+    - query
+    - run
+  service:
+    binary:
+    - create
+    - delete
+    - modify
+    - query
+    - start
+    - stop
+    config:
+    - create
+    - delete
+    - modify
+    - query
+    - start
+    - stop
+    permission:
+    - create
+    - delete
+    - modify
+    - query
+    - start
+    - stop
+    service:
+    - create
+    - delete
+    - modify
+    - query
+    - start
+    - stop
+  smb:
+    file:
+    - connect
+    - disconnect
+    - mount
+    - read
+    - write
+    pipe:
+    - connect
+    - disconnect
+    - mount
+    - read
+    - write
+    session:
+    - connect
+    - disconnect
+    - mount
+    - read
+    - write
+    share:
+    - connect
+    - disconnect
+    - mount
+    - read
+    - write
+  telemetry:
+    collector:
+    - disable
+    - enable
+    - query
+    - route
+    - transform
+    pipeline:
+    - disable
+    - enable
+    - query
+    - route
+    - transform
+    sink:
+    - disable
+    - enable
+    - query
+    - route
+    - transform
+    stream:
+    - disable
+    - enable
+    - query
+    - route
+    - transform
+  thread:
+    context:
+    - create
+    - inject
+    - inspect
+    - resume
+    - suspend
+    stack:
+    - create
+    - inject
+    - inspect
+    - resume
+    - suspend
+    thread:
+    - create
+    - inject
+    - inspect
+    - resume
+    - suspend
+  token:
+    access_token:
+    - exchange
+    - introspect
+    - issue
+    - revoke
+    - validate
+    api_token:
+    - exchange
+    - introspect
+    - issue
+    - revoke
+    - validate
+    id_token:
+    - exchange
+    - introspect
+    - issue
+    - revoke
+    - validate
+    refresh_token:
+    - exchange
+    - introspect
+    - issue
+    - revoke
+    - validate
+  validation:
+    atomic:
+    - cleanup
+    - execute
+    - measure
+    - report
+    - validate
+    coverage:
+    - cleanup
+    - execute
+    - measure
+    - report
+    - validate
+    persistence:
+      endpoint:
+      - validate
+    result:
+    - cleanup
+    - execute
+    - measure
+    - report
+    - validate
+    scenario:
+    - cleanup
+    - execute
+    - measure
+    - report
+    - validate
+  virtualization:
+    hypervisor:
+    - clone
+    - create
+    - delete
+    - start
+    - stop
+    snapshot:
+    - clone
+    - create
+    - delete
+    - start
+    - stop
+    template:
+    - clone
+    - create
+    - delete
+    - start
+    - stop
+    vm:
+    - clone
+    - create
+    - delete
+    - start
+    - stop
+  windows:
+    amsi:
+    - bypass
+    defender:
+    - disable
+    lolbin:
+    - certutil
+    service:
+    - create
+    task:
+    - create
+    vss:
+    - delete
+  wmi:
+    class:
+    - create
+    - delete
+    - modify
+    - query
+    - subscribe
+    instance:
+    - create
+    - delete
+    - modify
+    - query
+    - subscribe
+    namespace:
+    - create
+    - delete
+    - modify
+    - query
+    - subscribe
+    subscription:
+    - create
+    - delete
+    - modify
+    - query
+    - subscribe
