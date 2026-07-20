@@ -1,0 +1,309 @@
+[
+  {
+    "detection_id": "det.credential.lsass.access.001",
+    "name": "LSASS Memory Access from Non-SYSTEM Account",
+    "description": "Detects a process opening a handle to lsass.exe with read memory access rights from a non-SYSTEM context. High-fidelity indicator of credential dumping. Triggers on Mimikatz, ProcDump, and similar tooling. Expect false positives from security software — tune by excluding signed vendor paths.",
+    "severity": "high",
+    "capability_ids": ["process.lsass.access"],
+    "data_sources": ["windows_security_event_log", "sysmon", "edr_process_access"],
+    "platforms": ["windows"],
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1003.001",
+        "external_name": "OS Credential Dumping: LSASS Memory",
+        "relation": "detects",
+        "confidence": 0.97
+      },
+      {
+        "framework": "sigma",
+        "external_id": "win_lsass_access_non_system_account",
+        "external_name": "LSASS Access from Non-SYSTEM Account",
+        "relation": "implemented_by",
+        "confidence": 0.92
+      }
+    ]
+  },
+  {
+    "detection_id": "det.defense.vss.delete.001",
+    "name": "Volume Shadow Copy Deletion via vssadmin or wmic",
+    "description": "Detects deletion of all volume shadow copies using vssadmin, wmic, or PowerShell WMI calls — the primary ransomware pre-encryption step. Near-certain indicator of malicious intent; legitimate administrative deletion is rare and should be investigated on every trigger.",
+    "severity": "critical",
+    "capability_ids": ["windows.vss.delete"],
+    "data_sources": ["windows_security_event_log", "sysmon", "edr_process_create"],
+    "platforms": ["windows"],
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1490",
+        "external_name": "Inhibit System Recovery",
+        "relation": "detects",
+        "confidence": 0.98
+      },
+      {
+        "framework": "sigma",
+        "external_id": "win_vssadmin_delete_shadows",
+        "external_name": "Shadow Copy Deletion via VSSAdmin",
+        "relation": "implemented_by",
+        "confidence": 0.95
+      }
+    ]
+  },
+  {
+    "detection_id": "det.defense.defender.disable.001",
+    "name": "Windows Defender Real-Time Protection Disabled",
+    "description": "Detects disabling of Windows Defender real-time protection or tamper protection via PowerShell Set-MpPreference, registry modification, or Group Policy. High-confidence pre-attack indicator; adversaries disable AV to enable payload execution without detection.",
+    "severity": "high",
+    "capability_ids": ["windows.defender.disable"],
+    "data_sources": ["windows_security_event_log", "sysmon", "windows_defender_event_log"],
+    "platforms": ["windows"],
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1562.001",
+        "external_name": "Impair Defenses: Disable or Modify Tools",
+        "relation": "detects",
+        "confidence": 0.95
+      },
+      {
+        "framework": "sigma",
+        "external_id": "win_defender_disabled",
+        "external_name": "Windows Defender Disabled via Registry",
+        "relation": "implemented_by",
+        "confidence": 0.9
+      }
+    ]
+  },
+  {
+    "detection_id": "det.persistence.registry.run.001",
+    "name": "Registry Run Key Persistence",
+    "description": "Identify suspicious modification to HKLM or HKCU autorun keys. Correlate with process lineage — legitimate software installs from signed parent processes; persistence implants typically drop from temp directories, scripting engines, or unusual parent chains.",
+    "severity": "medium",
+    "capability_ids": ["registry.run.persist"],
+    "data_sources": ["sysmon", "edr_registry_events", "windows_security_event_log"],
+    "platforms": ["windows"],
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1547.001",
+        "external_name": "Registry Run Keys / Startup Folder",
+        "relation": "detects",
+        "confidence": 0.93
+      },
+      {
+        "framework": "sigma",
+        "external_id": "win_registry_persistence",
+        "external_name": "Windows Registry Persistence",
+        "relation": "implemented_by",
+        "confidence": 0.92
+      }
+    ]
+  },
+  {
+    "detection_id": "det.persistence.wmi.subscription.001",
+    "name": "WMI Permanent Event Subscription Created",
+    "description": "Detects creation of WMI permanent event filter, consumer, or binding in the root\\subscription namespace. WMI subscriptions survive reboots and are invisible to most EDR process trees. Any new subscription outside of known management tooling (SCCM, Puppet) warrants investigation.",
+    "severity": "high",
+    "capability_ids": ["wmi.subscription.create"],
+    "data_sources": ["sysmon", "wmi_activity_event_log", "edr_wmi_events"],
+    "platforms": ["windows"],
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1546.003",
+        "external_name": "Event Triggered Execution: WMI Event Subscription",
+        "relation": "detects",
+        "confidence": 0.95
+      },
+      {
+        "framework": "sigma",
+        "external_id": "win_wmi_persistence",
+        "external_name": "WMI Permanent Event Subscription",
+        "relation": "implemented_by",
+        "confidence": 0.91
+      }
+    ]
+  },
+  {
+    "detection_id": "det.injection.dll.001",
+    "name": "Suspicious DLL Loaded into Remote Process",
+    "description": "Detects DLL injection patterns: CreateRemoteThread targeting another process, VirtualAllocEx + WriteProcessMemory sequences, or unsigned DLLs loaded into high-value processes (lsass, svchost, explorer). Correlate on process pairs and DLL signing status to reduce noise.",
+    "severity": "high",
+    "capability_ids": ["process.injection.dll"],
+    "data_sources": ["sysmon", "edr_process_access", "edr_image_load"],
+    "platforms": ["windows"],
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1055.001",
+        "external_name": "Process Injection: Dynamic-link Library Injection",
+        "relation": "detects",
+        "confidence": 0.88
+      },
+      {
+        "framework": "sigma",
+        "external_id": "win_suspicious_remote_thread",
+        "external_name": "Suspicious Remote Thread Creation",
+        "relation": "implemented_by",
+        "confidence": 0.85
+      }
+    ]
+  },
+  {
+    "detection_id": "det.injection.hollow.001",
+    "name": "Process Hollowing via NtUnmapViewOfSection",
+    "description": "Detects process hollowing by identifying the characteristic call sequence: spawn suspended process, NtUnmapViewOfSection or ZwUnmapViewOfSection, VirtualAllocEx, WriteProcessMemory, SetThreadContext/ResumeThread. Correlation: process image path does not match on-disk PE header.",
+    "severity": "critical",
+    "capability_ids": ["process.injection.hollow"],
+    "data_sources": ["sysmon", "edr_process_access", "edr_api_monitoring"],
+    "platforms": ["windows"],
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1055.012",
+        "external_name": "Process Injection: Process Hollowing",
+        "relation": "detects",
+        "confidence": 0.9
+      },
+      {
+        "framework": "sigma",
+        "external_id": "win_process_hollowing",
+        "external_name": "Process Hollowing Detection",
+        "relation": "implemented_by",
+        "confidence": 0.82
+      }
+    ]
+  },
+  {
+    "detection_id": "det.defense.amsi.bypass.001",
+    "name": "AMSI Bypass via Memory Patching or Provider Removal",
+    "description": "Detects AMSI bypass through: amsi.dll memory patch (write to AmsiScanBuffer), removal of AMSI providers from registry, or loading of known bypass scripts. Often precedes reflective PowerShell attacks. Correlate with subsequent PowerShell encoded command execution.",
+    "severity": "high",
+    "capability_ids": ["windows.amsi.bypass"],
+    "data_sources": ["sysmon", "windows_powershell_event_log", "edr_api_monitoring"],
+    "platforms": ["windows"],
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1562.001",
+        "external_name": "Impair Defenses: Disable or Modify Tools",
+        "relation": "detects",
+        "confidence": 0.88
+      },
+      {
+        "framework": "sigma",
+        "external_id": "win_amsi_bypass",
+        "external_name": "AMSI Bypass via Memory Patching",
+        "relation": "implemented_by",
+        "confidence": 0.84
+      }
+    ]
+  },
+  {
+    "detection_id": "det.command_and_control.proxy.tunnel.001",
+    "name": "Suspicious Proxy or Tunnel Configuration for C2",
+    "description": "Detects unusual proxy configuration changes, SOCKS/HTTP tunnel tools (ngrok, chisel, plink, stunnel), or unexpected outbound connections on unusual ports to known tunneling infrastructure. Combine with DNS resolution patterns and beaconing behavior analysis.",
+    "severity": "medium",
+    "capability_ids": ["network.proxy.tunnel"],
+    "data_sources": ["network_flow", "proxy_logs", "sysmon", "edr_network_events"],
+    "platforms": ["windows", "linux", "macos"],
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1090",
+        "external_name": "Proxy",
+        "relation": "detects",
+        "confidence": 0.82
+      },
+      {
+        "framework": "sigma",
+        "external_id": "win_ngrok_tunnel",
+        "external_name": "Ngrok Tunnel Established",
+        "relation": "implemented_by",
+        "confidence": 0.88
+      }
+    ]
+  },
+  {
+    "detection_id": "det.persistence.service.create.001",
+    "name": "Suspicious Windows Service Created",
+    "description": "Detects creation of new Windows services with suspicious characteristics: binary path in temp or user-writable directories, service name resembling legitimate services, service started immediately after creation, or service created by non-administrative tooling. Correlate on parent process and binary signing.",
+    "severity": "high",
+    "capability_ids": ["windows.service.create"],
+    "data_sources": ["windows_system_event_log", "sysmon", "edr_service_events"],
+    "platforms": ["windows"],
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1543.003",
+        "external_name": "Create or Modify System Process: Windows Service",
+        "relation": "detects",
+        "confidence": 0.91
+      },
+      {
+        "framework": "sigma",
+        "external_id": "win_new_service_creation",
+        "external_name": "Suspicious New Service Created",
+        "relation": "implemented_by",
+        "confidence": 0.87
+      }
+    ]
+  },
+  {
+    "detection_id": "det.execution.certutil.lolbin.001",
+    "name": "certutil LOLBin Abuse for Download or Decode",
+    "description": "Detects certutil.exe used as a LOLBin for downloading files (-urlcache -split -f), decoding base64 (-decode), or certificate manipulation outside of PKI workflows. certutil is a signed Microsoft binary; abuse is high-confidence and rarely legitimate on endpoints that are not PKI infrastructure.",
+    "severity": "high",
+    "capability_ids": ["windows.lolbin.certutil"],
+    "data_sources": ["sysmon", "windows_security_event_log", "edr_process_create"],
+    "platforms": ["windows"],
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1105",
+        "external_name": "Ingress Tool Transfer",
+        "relation": "detects",
+        "confidence": 0.94
+      },
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1140",
+        "external_name": "Deobfuscate/Decode Files or Information",
+        "relation": "detects",
+        "confidence": 0.91
+      },
+      {
+        "framework": "sigma",
+        "external_id": "win_certutil_encode",
+        "external_name": "CertUtil Encode/Decode",
+        "relation": "implemented_by",
+        "confidence": 0.93
+      }
+    ]
+  },
+  {
+    "detection_id": "det.discovery.cloud.iam.enumerate.001",
+    "name": "Cloud IAM Role and Policy Enumeration",
+    "description": "Detects bulk enumeration of IAM roles, policies, and permissions via cloud provider API. Characteristic pattern: high volume of read-only IAM API calls (ListRoles, GetPolicy, ListAttachedRolePolicies) in a short window, especially from a newly-assumed role or outside normal automation patterns.",
+    "severity": "medium",
+    "capability_ids": ["cloud.iam.enumerate"],
+    "data_sources": ["aws_cloudtrail", "gcp_audit_logs", "azure_activity_logs"],
+    "platforms": ["cloud"],
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1069.003",
+        "external_name": "Permission Groups Discovery: Cloud Groups",
+        "relation": "detects",
+        "confidence": 0.86
+      },
+      {
+        "framework": "aws_security_hub",
+        "external_id": "IAM.1",
+        "external_name": "IAM policies should not allow full administrative privileges",
+        "relation": "related_to",
+        "confidence": 0.72
+      }
+    ]
+  }
+]
