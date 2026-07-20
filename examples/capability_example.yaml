@@ -1,0 +1,20 @@
+capability_id: endpoint.persistence.autorun.create
+stable_id: OSCO-CAP-EX-0001
+name: Create Autorun Persistence
+description: Create an autorun persistence mechanism.
+category: endpoint
+domain: persistence
+platforms:
+  - windows
+providers:
+  - provider.windows
+status: draft
+confidence: 0.7
+safety: caution
+required_privileges:
+  - registry_write
+mappings:
+  - framework: mitre_attack
+    external_id: T1547.001
+    external_name: Registry Run Keys / Startup Folder
+    confidence: 0.9

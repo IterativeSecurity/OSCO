@@ -1,0 +1,127 @@
+[
+  {
+    "validation_id": "val.persistence.endpoint.001",
+    "name": "Endpoint Persistence Validation",
+    "description": "Validate endpoint persistence detections with safe simulations.",
+    "mappings": [
+      {
+        "framework": "atomic_red_team",
+        "external_id": "T1053.005",
+        "external_name": "Scheduled Task",
+        "confidence": 0.9
+      },
+      {
+        "framework": "velociraptor",
+        "external_id": "Windows.Registry.RunKeys",
+        "external_name": "Registry Run Keys Artifact",
+        "relation": "validates",
+        "confidence": 0.88
+      }
+    ]
+  },
+  {
+    "validation_id": "val.execution.endpoint.002",
+    "name": "PowerShell Encoded Command Validation",
+    "description": "Validate suspicious PowerShell execution analytics using controlled encoded-command simulation.",
+    "mappings": [
+      {
+        "framework": "atomic_red_team",
+        "external_id": "T1059.001",
+        "external_name": "PowerShell",
+        "relation": "validates",
+        "confidence": 0.92
+      },
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1059.001",
+        "external_name": "Command and Scripting Interpreter: PowerShell",
+        "relation": "maps_to",
+        "confidence": 0.94
+      }
+    ]
+  },
+  {
+    "validation_id": "val.credential.endpoint.003",
+    "name": "Credential Access Simulation",
+    "description": "Validate credential dumping detections with constrained memory-access simulation in isolated endpoint environments.",
+    "mappings": [
+      {
+        "framework": "atomic_red_team",
+        "external_id": "T1003",
+        "external_name": "OS Credential Dumping",
+        "relation": "validates",
+        "confidence": 0.9
+      },
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1003",
+        "external_name": "OS Credential Dumping",
+        "relation": "maps_to",
+        "confidence": 0.93
+      }
+    ]
+  },
+  {
+    "validation_id": "val.iam.cloud.004",
+    "name": "Cloud IAM Role Creation Validation",
+    "description": "Validate IAM role creation monitoring controls with reversible test role deployment.",
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1098",
+        "external_name": "Account Manipulation",
+        "relation": "maps_to",
+        "confidence": 0.86
+      },
+      {
+        "framework": "aws_security_hub",
+        "external_id": "IAM.1",
+        "external_name": "IAM policies should not allow full administrative privileges",
+        "relation": "related_to",
+        "confidence": 0.74
+      }
+    ]
+  },
+  {
+    "validation_id": "val.container.cluster.005",
+    "name": "Kubernetes Secret Access Validation",
+    "description": "Validate Kubernetes secret access detection coverage using ephemeral namespace and test secret reads.",
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1552.007",
+        "external_name": "Unsecured Credentials: Container API",
+        "relation": "maps_to",
+        "confidence": 0.88
+      },
+      {
+        "framework": "velociraptor",
+        "external_id": "Kubernetes.Secrets.Access",
+        "external_name": "Kubernetes Secret Access Artifact",
+        "relation": "validates",
+        "confidence": 0.79
+      }
+    ]
+  },
+  {
+    "validation_id": "val.saas.mail.006",
+    "name": "SaaS Mail Forwarding Rule Validation",
+    "description": "Validate mailbox forwarding abuse detections by creating and removing controlled forwarding rules.",
+    "mappings": [
+      {
+        "framework": "mitre_attack",
+        "external_id": "T1114.003",
+        "external_name": "Email Collection: Email Forwarding Rule",
+        "relation": "maps_to",
+        "confidence": 0.95
+      },
+      {
+        "framework": "sigma",
+        "external_id": "o365_forwarding_rule_creation",
+        "external_name": "Office 365 Mail Forwarding Rule Creation",
+        "relation": "validates",
+        "confidence": 0.84
+      }
+    ]
+  }
+]

@@ -1,0 +1,130 @@
+[
+  {
+    "provider_id": "provider.windows",
+    "name": "Windows",
+    "category": "operating_system",
+    "platforms": ["windows"],
+    "description": "Microsoft Windows operating system provider.",
+    "supports": ["filesystem", "registry", "process", "scheduled_task", "eventlog", "identity"]
+  },
+  {
+    "provider_id": "provider.linux",
+    "name": "Linux",
+    "category": "operating_system",
+    "platforms": ["linux"],
+    "description": "Linux operating system provider.",
+    "supports": ["filesystem", "process", "service", "network", "authentication"]
+  },
+  {
+    "provider_id": "provider.macos",
+    "name": "macOS",
+    "category": "operating_system",
+    "platforms": ["macos"],
+    "description": "Apple macOS operating system provider.",
+    "supports": ["filesystem", "process", "launch_agent", "network"]
+  },
+  {
+    "provider_id": "provider.aws",
+    "name": "AWS",
+    "category": "cloud",
+    "platforms": ["cloud"],
+    "description": "Amazon Web Services provider.",
+    "supports": ["cloud", "identity", "iam", "audit", "network"]
+  },
+  {
+    "provider_id": "provider.azure",
+    "name": "Azure",
+    "category": "cloud",
+    "platforms": ["cloud"],
+    "description": "Microsoft Azure provider.",
+    "supports": ["cloud", "identity", "iam", "audit", "network"]
+  },
+  {
+    "provider_id": "provider.gcp",
+    "name": "Google Cloud",
+    "category": "cloud",
+    "platforms": ["cloud"],
+    "description": "Google Cloud Platform provider.",
+    "supports": ["cloud", "identity", "iam", "audit", "network"]
+  },
+  {
+    "provider_id": "provider.microsoft365",
+    "name": "Microsoft 365",
+    "category": "saas",
+    "platforms": ["saas"],
+    "description": "Microsoft 365 SaaS provider.",
+    "supports": ["email", "collaboration", "audit", "identity"]
+  },
+  {
+    "provider_id": "provider.google_workspace",
+    "name": "Google Workspace",
+    "category": "saas",
+    "platforms": ["saas"],
+    "description": "Google Workspace SaaS provider.",
+    "supports": ["email", "collaboration", "audit", "identity"]
+  },
+  {
+    "provider_id": "provider.okta",
+    "name": "Okta",
+    "category": "identity",
+    "platforms": ["identity", "saas"],
+    "description": "Okta identity provider.",
+    "supports": ["identity", "authentication", "authorization", "audit"]
+  },
+  {
+    "provider_id": "provider.github",
+    "name": "GitHub",
+    "category": "saas",
+    "platforms": ["saas"],
+    "description": "GitHub SaaS provider.",
+    "supports": ["identity", "audit", "automation", "api"]
+  },
+  {
+    "provider_id": "provider.docker",
+    "name": "Docker",
+    "category": "container",
+    "platforms": ["container"],
+    "description": "Docker container runtime provider.",
+    "supports": ["container", "image", "network", "filesystem"]
+  },
+  {
+    "provider_id": "provider.kubernetes",
+    "name": "Kubernetes",
+    "category": "container_orchestration",
+    "platforms": ["container", "cloud"],
+    "description": "Kubernetes orchestration provider.",
+    "supports": ["kubernetes", "container", "identity", "network", "audit"]
+  },
+  {
+    "provider_id": "provider.chrome",
+    "name": "Chrome",
+    "category": "browser",
+    "platforms": ["browser"],
+    "description": "Google Chrome browser provider.",
+    "supports": ["browser", "cookie", "history", "extension"]
+  },
+  {
+    "provider_id": "provider.firefox",
+    "name": "Firefox",
+    "category": "browser",
+    "platforms": ["browser"],
+    "description": "Mozilla Firefox browser provider.",
+    "supports": ["browser", "cookie", "history", "extension"]
+  },
+  {
+    "provider_id": "provider.sql_server",
+    "name": "SQL Server",
+    "category": "database",
+    "platforms": ["database"],
+    "description": "Microsoft SQL Server database provider.",
+    "supports": ["database", "query", "audit", "authorization"]
+  },
+  {
+    "provider_id": "provider.postgresql",
+    "name": "PostgreSQL",
+    "category": "database",
+    "platforms": ["database"],
+    "description": "PostgreSQL database provider.",
+    "supports": ["database", "query", "audit", "authorization"]
+  }
+]

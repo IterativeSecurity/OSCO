@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package osco.v1;
+
+message CapabilityMapping {
+  string framework = 1;
+  string external_id = 2;
+  string external_name = 3;
+  string relation = 4;
+  double confidence = 5;
+  string url = 6;
+}
+
+message Capability {
+  string capability_id = 1;
+  string stable_id = 2;
+  string name = 3;
+  string description = 4;
+  string category = 5;
+  string domain = 6;
+  repeated string platforms = 7;
+  repeated string providers = 8;
+  string version = 9;
+  string status = 10;
+  double confidence = 11;
+  string safety = 12;
+  string parent_capability = 13;
+  repeated string child_capabilities = 14;
+  repeated string related_capabilities = 15;
+  repeated string required_privileges = 16;
+  repeated string preconditions = 17;
+  repeated string postconditions = 18;
+  repeated string inputs = 19;
+  repeated string outputs = 20;
+  repeated CapabilityMapping mappings = 21;
+}
+
+message Provider {
+  string provider_id = 1;
+  string name = 2;
+  string category = 3;
+  repeated string platforms = 4;
+  string description = 5;
+  repeated string supports = 6;
+}
+
+message OSCOBundle {
+  string ontology_version = 1;
+  repeated Capability capabilities = 2;
+  repeated Provider providers = 3;
+}

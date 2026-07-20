@@ -1,0 +1,10 @@
+{
+  "input": {
+    "framework": "mitre_attack",
+    "external_id": "T1053.005"
+  },
+  "output": {
+    "capability_id": "windows.task.create",
+    "confidence": 0.98
+  }
+}

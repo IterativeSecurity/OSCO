@@ -1,0 +1,28 @@
+version: 0.1.0
+frameworks:
+  - mitre_attack
+  - mitre_car
+  - atomic_red_team
+  - velociraptor
+  - sigma
+  - yara
+  - semgrep
+  - osquery
+  - ocsf
+  - ecs
+  - opentelemetry
+  - openc2
+  - openioc
+  - stix
+  - taxii
+  - cve
+  - cwe
+  - capec
+  - event_maturity_matrix
+  - cis_benchmarks
+  - nist_800_53
+  - pci_dss
+  - iso_27001
+  - microsoft_security_baselines
+  - aws_security_hub
+  - google_scc
