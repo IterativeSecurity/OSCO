@@ -2,7 +2,7 @@ site_name: OSCO - Open Security Capability Ontology
 site_description: A comprehensive ontology for security capabilities, discoveries, and detections
 repo_url: https://github.com/IterativeSecurity/OSCO
 repo_name: IterativeSecurity/OSCO
-edit_uri: edit/main/docs/
+edit_uri: edit/main/
 
 theme:
   name: material
@@ -68,22 +68,22 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Getting Started:
-    - Overview: docs/vision.md
-    - Architecture: docs/architecture.md
-    - Quick Start: docs/examples.md
+    - Overview: vision.md
+    - Architecture: architecture.md
+    - Quick Start: examples.md
   - Ontology:
     - Capabilities: capability/README.md
     - Discoveries: discovery/README.md
     - Detections: detection/README.md
-    - Object Definitions: docs/object-definitions.md
-    - Field Reference: docs/field-reference.md
-    - Relation Types: docs/relation-types.md
+    - Object Definitions: object-definitions.md
+    - Field Reference: field-reference.md
+    - Relation Types: relation-types.md
   - Guides:
-    - Capability Authoring: docs/capability-authoring-guide.md
-    - Discovery Guide: docs/discovery-guide.md
-    - Detection & Verification: docs/verification-guide.md
-    - Provider Authoring: docs/provider-authoring-guide.md
-    - Mapping Guide: docs/mapping-guide.md
+    - Capability Authoring: capability-authoring-guide.md
+    - Discovery Guide: discovery-guide.md
+    - Detection & Verification: verification-guide.md
+    - Provider Authoring: provider-authoring-guide.md
+    - Mapping Guide: mapping-guide.md
   - Data:
     - Capability Catalog: capability/catalog.md
     - Discovery Catalog: discovery/catalog.md
@@ -94,8 +94,8 @@ nav:
     - Contributing: CONTRIBUTING.md
     - Code of Conduct: CODE_OF_CONDUCT.md
     - Security Policy: SECURITY.md
-    - Governance: docs/governance.md
-    - Best Practices: docs/best-practices.md
+    - Governance: governance.md
+    - Best Practices: best-practices.md
 
 extra:
   version:

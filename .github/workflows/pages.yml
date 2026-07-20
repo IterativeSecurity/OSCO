@@ -48,8 +48,17 @@ jobs:
 
       - name: Install mkdocs dependencies
         run: |
-          uv pip install mkdocs mkdocs-material pymdown-extensions mkdocs-macros-plugin
-
+          uv pip install mkdocs mkdocs-material pymdown-extensions mkdocs-macros-plugin mkdocs-exclude
+      - name: Prepare docs directory
+        run: |
+          # Copy repo-root files referenced in nav into docs/
+          cp CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md docs/
+          # Copy data directories referenced in nav into docs/
+          cp -r capability docs/capability
+          cp -r discovery docs/discovery
+          cp -r detection docs/detection
+          cp -r provider docs/provider
+          cp -r mappings docs/mappings
       - name: Build documentation
         run: uv run mkdocs build
 
