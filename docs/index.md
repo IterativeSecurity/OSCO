@@ -117,4 +117,4 @@ For security issues, please see [SECURITY.md](SECURITY.md).
 
 ---
 
-**Built with ❤️ by the Sublime Security team and community contributors**
+**Built with ❤️ by the Iterative Security team and community contributors**

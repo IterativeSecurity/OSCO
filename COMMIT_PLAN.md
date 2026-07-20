@@ -69,7 +69,7 @@ The documentation site includes:
 
 ### Option A: Push to GitHub
 ```bash
-git remote add origin https://github.com/sublime-security/osco.git
+git remote add origin https://github.com/IterativeSecurity/OSCO.git
 git push -u origin main
 ```
 
@@ -106,4 +106,4 @@ All commits follow these best practices:
 Once pushed to GitHub:
 1. GitHub Actions will automatically run validators and tests
 2. GitHub Pages will build and deploy the site
-3. Documentation will be available at: `https://sublime-security.github.io/osco/`
+3. Documentation will be available at: `https://iterativesecurity.github.io/OSCO/`
